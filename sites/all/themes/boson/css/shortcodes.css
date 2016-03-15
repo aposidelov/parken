@@ -3310,7 +3310,7 @@ input::-moz-placeholder, textarea::-moz-placeholder {
 .gray-content .b-service i.m-orange,
 .gray-content .b-service i.m-yellow
 {
-	/*background: #fdfdfd url(../img/serv-light.png) repeat-x top;*/
+	background: #fdfdfd url(../img/serv-light.png) repeat-x top;
 }
 
 .b-service i.m-square {
@@ -3319,7 +3319,7 @@ input::-moz-placeholder, textarea::-moz-placeholder {
 	
 	margin: 0 auto 18px;
 
-	/*background: #fbfbfb url(../img/serv-light.png) repeat-x top;*/
+	background: #fbfbfb url(../img/serv-light.png) repeat-x top;
 	border-radius: 4px;
 	border: 1px solid #e2e2e2;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.04);
@@ -3867,8 +3867,7 @@ input::-moz-placeholder, textarea::-moz-placeholder {
 
 .client {
 	display: inline-block;
-	width: 183px;
-
+	width: 182px;
 	margin: 0 10px 20px;
 }
 
@@ -4197,17 +4196,17 @@ input::-moz-placeholder, textarea::-moz-placeholder {
 	margin: 0 8px 10px;
 }
 
-.col-1_2 .b-gallery .img-wrap {
+.col-md-6 .b-gallery .img-wrap {
 	width: 106px;
 	margin: 0 8px 10px;
 }
 
-.col-3_4 .b-gallery .img-wrap {
+.col-md-9 .b-gallery .img-wrap {
 	width: 107px;
 	margin: 0 8px 10px;
 }
 
-.col-1_3 .b-gallery .img-wrap {
+.col-md-4 .b-gallery .img-wrap {
 	width: 90px;
 	margin: 0 8px 10px;
 }
@@ -4314,7 +4313,7 @@ input::-moz-placeholder, textarea::-moz-placeholder {
 }
 
 .tariff-description {
-	margin: 25px 20px 0;
+	margin: 25px 15px 0;
 	
 	font-family: 'OpenSansItalic';
 	color: #65686d;
@@ -4441,26 +4440,21 @@ input::-moz-placeholder, textarea::-moz-placeholder {
 	color: #723725;
 }
 
-.region-content input[type="text"] {
-	width: 217px;
-	height: 33px;
+.b-service a i {
+	text-shadow:none !important;
+	box-shadow:none !important;
+}
 
-	padding: 0 12px;
-	
-	background: #fafafa;
-	
-	border: 1px solid #e2e2e2;
-	border-top: 1px solid #d4d4d4;
-	outline: none;
-	border-radius: 2px;
+.b-service a , .b-service a:hover {
+	color:transparent !important;
+	text-shadow:none !important;
+	box-shadow:none !important;
+}
 
-	font-family: 'OpenSansRegular';
-	color: #65686d;
-	line-height: 1.6;
-
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+a.dark-link {
+    color: #313538 !important;
+}
+a.dark-link:hover {
+    color: #313538 !important;
+    text-decoration: underline;
 }

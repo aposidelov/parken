@@ -1,0 +1,5 @@
+name = Bootstrap Menu
+description = Allow to turn drupal menus into bootstrap menus
+package = My Project
+core = 7.x
+; Files

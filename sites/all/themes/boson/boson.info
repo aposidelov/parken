@@ -9,11 +9,12 @@ screenshot = 'screenshot.png'
 ;Stylesheets
 
 ;stylesheets[all][] = 'css/main.css'
-stylesheets[all][] = 'css/responsive.css'
+;stylesheets[all][] = 'css/responsive.css'
 stylesheets[all][] = 'css/prettyPhoto.css'
 
-
+scripts[] = js/jquery.sticky.js
 scripts[] = js/jquery.prettyPhoto.js
+;scripts[] = js/stellar.js
 scripts[] = js/main.js
 
 

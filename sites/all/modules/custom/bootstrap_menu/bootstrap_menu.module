@@ -1,0 +1,128 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function bootstrap_menu_init() {
+  drupal_add_css(drupal_get_path('module', 'bootstrap_menu') . '/css/vertical.css');  
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bootstrap_menu_theme($existing, $type, $theme, $path) {		
+	$items = array(
+		'bootstrap_menu_main_tree' => array(
+			'variables' => array('tree' => '', 'menu_name' => ''),
+			'template' => 'menu-tree--default',
+		),
+	);		
+	$bt_menus = variable_get('is_bootstrap_menu', array());	
+	foreach ($bt_menus as $menu_name => $is_bootstrap_menu) {
+		if ($is_bootstrap_menu) {
+			$items['menu_tree__'.$menu_name] = array(	
+	    	'render element' => 'tree',  
+	    	'function' => 'bootstrap_menu_main_tree_callback',	    	
+	  	);
+	  	$items['menu_link__'.$menu_name] = array(	
+	    	'render element' => 'element',  
+	    	'function' => 'bootstrap_menu_main_link',
+	  	);
+	  }
+	}
+
+	return $items;	
+}
+
+/**
+ * Implements hook_form_menu_edit_item_alter().
+ */
+function bootstrap_menu_form_menu_edit_item_alter(&$form, &$form_state) {
+  //dsm('link edit');
+}
+
+/**
+ * Implements hook_form_menu_edit_menu_alter().
+ */
+function bootstrap_menu_form_menu_edit_menu_alter(&$form, &$form_state) {
+  if ($form['#insert']) {
+	  $form['is_bootstrap_menu'] = array(
+	    '#type' => 'checkbox',    
+	    '#title' => t('Bootstrap Menu'),    
+	  );	
+  } else {
+  	$menu_name = $form['old_name']['#value'];
+  	$menu_name = str_replace('-', '_', $menu_name);
+  	$bt_menus = variable_get('is_bootstrap_menu', array());    	
+
+  	$form['is_bootstrap_menu'] = array(
+	    '#type' => 'checkbox',    
+	    '#title' => t('Bootstrap Menu'),    
+	    '#default_value' => isset($bt_menus[$menu_name]) ? $bt_menus[$menu_name] : FALSE,
+	  );	
+  }
+  $form['#submit'][] = 'bm_edit_menu_submit';
+}
+
+function bm_edit_menu_submit($form, &$form_state) {
+	$menu_name = str_replace('-', '_', $form_state['values']['menu_name']);
+	$is_bootstrap_menu = $form_state['values']['is_bootstrap_menu'];
+	$bt_menus = variable_get('is_bootstrap_menu', array());
+	$bt_menus[$menu_name] = $is_bootstrap_menu;
+
+	variable_set('is_bootstrap_menu', $bt_menus);
+	drupal_theme_rebuild();
+}
+
+function bootstrap_menu_main_tree_callback(&$variables) {		
+	$menu_name = bm_get_menu_by_suggestion($variables['tree']['#theme_wrappers'][0]);
+	
+	return theme('bootstrap_menu_main_tree', 
+		array('tree' => $variables['tree']['#children'],
+					'menu_name' => $menu_name));
+}
+
+function bootstrap_menu_main_link(array $variables) {  
+	$menu_name = bm_get_menu_by_suggestion($variables['element']['#theme']);
+  
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    // Prevent dropdown functions from being added to management menu so it
+    // does not affect the navbar module.
+    if (($element['#original_link']['menu_name'] == 'management') && (module_exists('navbar'))) {
+      $sub_menu = drupal_render($element['#below']);
+    }
+    elseif ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
+      // Add our own wrapper.
+      unset($element['#below']['#theme_wrappers']);
+      $sub_menu = '<ul class="dropdown-menu yamm-sm">' . drupal_render($element['#below']) . '</ul>';
+      // Generate as standard dropdown.
+      $element['#title'] .= ' <span class="caret"></span>';
+      $element['#attributes']['class'][] = 'dropdown';
+      $element['#localized_options']['html'] = TRUE;
+
+      // Set dropdown trigger element to # to prevent inadvertant page loading
+      // when a submenu link is clicked.
+      $element['#localized_options']['attributes']['data-target'] = '#';
+      $element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
+      $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
+      $element['#href'] = '#';
+      $element['#localized_options']['external'] = TRUE;
+    }
+  }
+  // On primary navigation menu, class 'active' is not set on active menu item.
+  // @see https://drupal.org/node/1896674
+  if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
+    $element['#attributes']['class'][] = 'active';
+  }
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+function bm_get_menu_by_suggestion($suggestion) {
+	$menu_name = str_replace('menu_tree__', '', $suggestion);
+	return str_replace('_', '-', $menu_name);
+}

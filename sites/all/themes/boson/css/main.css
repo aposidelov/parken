@@ -527,6 +527,16 @@ mark.strong {
 	display: block;
 }
 
+.row {
+	vertical-align: top;	
+
+	text-align: left;
+	font-size: 13px;
+
+	letter-spacing: normal;
+	word-spacing: normal;
+}
+
 .row-item {
 	display: inline-block;
 
@@ -699,7 +709,7 @@ i.ita {
 }
 
 .layout {
-	width: 1010px;
+	width: 100%;
 	min-width: 200px;
 	margin: auto;
 	padding: 0 40px;
@@ -721,6 +731,10 @@ i.ita {
 	padding: 0 40px;
 
 	text-align: right;
+}
+
+.header .container, .content .header .container {
+	position: relative;
 }
 
 .content .header .layout {
@@ -999,7 +1013,7 @@ i.ita {
 
 /*----------------------------------------------*/
 
-.header .layout {
+.header .layout, .header .container {
 	height: 80px;
 	line-height: 80px;
 }
@@ -3698,4 +3712,6 @@ margin-bottom: 30px;
 
 }
 
-
+.featured-block p {
+	font-size: 18px;
+}
