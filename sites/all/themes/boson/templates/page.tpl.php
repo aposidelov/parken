@@ -113,14 +113,14 @@ if (theme_get_setting('boson_boxed') == TRUE) {
 	<!-- CONTENT -->
 	<div class="content">
 		<?php $container_class = drupal_is_front_page() || arg(0) == 'kontakt-os' ? 'container-fluid' : 'container'; ?>
-			<div class="<?php print $container_class; ?>" style="padding: 0px;">	 	
+			<div class="<?php print $container_class; ?>">	 	
       <?php if ($page['sidebar_first']): ?>
        	<div class="row">    
 					<div class="col-sm-8">
     	<?php endif; ?>
  			<?php if (!$page['sidebar_first']): ?>
        	<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-12"  style="padding: 0px;">
     	<?php endif; ?>
          
           

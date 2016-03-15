@@ -708,7 +708,6 @@ body {
   background-color: #fff;
   font: 13px/20px 'OpenSansRegular';
   color: #65686d;
-  overflow-x: hidden;
 }
 .none {
   background-color: #fff;
@@ -4284,9 +4283,6 @@ input#edit-pass {
     padding-top: 100px;
   }
 }
-body {
-  overflow-x: hidden;
-}
 .panels-flexible-region-1-center,
 .panels-flexible-region-2-center {
   float: none;
@@ -4401,7 +4397,7 @@ body {
 }
 .webform-client-form .webform-icon-container .webform-component input,
 .webform-client-form .webform-icon-container .webform-component textarea {
-  width: 100%;
+  width: 90%;
   padding-left: 30px !important;
 }
 input:focus,
