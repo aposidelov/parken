@@ -6,8 +6,9 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-      
-    <a class="navbar-brand logo" href="#"><img src="<?php print theme_get_setting('logo'); ?>" alt=""></a>
+    <?php $logo = theme_get_setting('logo'); ?>
+    <?php $image = theme('image', array('path' => $logo)); ?>
+    <?php print l($image, '<front>', array('html' => TRUE, 'attributes' => array('class' => array('navbar-brand', 'logo') ))); ?>    
   </div>
   <div class="collapse navbar-collapse" id="<?php print $menu_name; ?>">
 		<ul class="nav navbar-nav"><?php print $tree; ?></ul>

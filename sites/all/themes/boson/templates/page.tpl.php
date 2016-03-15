@@ -37,7 +37,7 @@ if (theme_get_setting('boson_boxed') == TRUE) {
 	============================================= -->
 		<div class="header">
 			<header>
-				<div class="container clearfix" style="height: 83px;">
+				<div class="container clearfix" style="height: 84px;">
 		      <?php print render($page['main_menu']); ?>			
 				</div>
 			</header>
