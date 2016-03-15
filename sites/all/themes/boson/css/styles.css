@@ -382,9 +382,6 @@ header .navbar-nav a {
   -webkit-transition: none;
   transition: none;
 }
-header .navbar-default .navbar-nav > li > a.active {
-  color: #e34735 !important;
-}
 header .navbar-nav > li {
   display: inline-block;
   vertical-align: top;
@@ -4346,7 +4343,7 @@ input#edit-pass {
 .navbar li.expanded,
 .navbar li.collapsed,
 .navbar li.leaf {
-  padding: 2px 0.5em 0 0;
+  padding: 0px 0 !important;
 }
 .navbar-nav > li > a {
   padding: 0 15px;
@@ -4355,6 +4352,9 @@ input#edit-pass {
 }
 .navbar-default .navbar-nav > li > a.active-trail {
   color: #5489de !important;
+}
+header .navbar-default .navbar-nav > li > a {
+  line-height: 84px;
 }
 .navbar-nav a.active-trail:before {
   content: '';
@@ -4386,6 +4386,13 @@ input#edit-pass {
   background: transparent;
   box-shadow: none;
 }
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .active > a:hover {
+  background: transparent;
+  box-shadow: none;
+}
 .webform-client-form .webform-icon-container {
   position: relative;
 }
@@ -4414,11 +4421,26 @@ textarea:focus {
 .panel-separator {
   display: none;
 }
-.slider,
+.view-partners {
+  margin-top: 18px;
+}
 .view-partners,
 .content-featured,
 .b-google-map {
   margin-bottom: 40px;
+}
+.b-titlebar {
+  margin-bottom: 30px;
+}
+.b-box {
+  padding: 20px 25px 0px;
+}
+.b-promo {
+  min-height: 90px;
+}
+.b-promo .btn.big {
+  margin: 0px;
+  line-height: 38px;
 }
 @media only screen and (max-width: 767px) {
   .logo {

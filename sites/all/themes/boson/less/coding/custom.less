@@ -73,7 +73,7 @@ body {
 	box-shadow: none;
 
 	li.expanded, li.collapsed, li.leaf  {
-		padding: 2px 0.5em 0 0;
+		padding: 0px 0 !important;
 	}
 }
 
@@ -85,6 +85,10 @@ body {
 
 .navbar-default .navbar-nav > li > a.active-trail {
     color: #5489de !important;
+}
+
+header .navbar-default .navbar-nav > li > a {
+	line-height: 84px;
 }
 
 .navbar-nav a.active-trail:before {
@@ -118,6 +122,14 @@ body {
 }
 
 .navbar-default .navbar-nav > .open > a:focus {
+	background: transparent;
+	box-shadow: none;
+}
+
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .active > a:hover {
 	background: transparent;
 	box-shadow: none;
 }
@@ -162,9 +174,32 @@ input:focus, textarea:focus {
 	display: none;
 }
 
-.slider, .view-partners, .content-featured, .b-google-map {
+.view-partners {
+    margin-top: 18px;
+}
+
+.view-partners, .content-featured, .b-google-map {
 	margin-bottom: 40px;
 }
+
+.b-titlebar {
+    margin-bottom: 30px;
+}
+
+.b-box {
+	padding: 20px 25px 0px;
+}
+
+.b-promo {
+    min-height: 90px;
+
+    .btn.big { 
+	    margin: 0px;
+
+        line-height: 38px;
+    }
+}
+
 
 @media only screen and (max-width: 767px) {
 	.logo {
