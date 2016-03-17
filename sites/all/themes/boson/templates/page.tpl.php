@@ -228,7 +228,7 @@ if (theme_get_setting('boson_boxed') == TRUE) {
 						<?php if ($page['footer_secondcolumn']): ?>
                     <?php print render($page['footer_secondcolumn']); ?>
                     <?php endif; ?>
-
+						
 					</div>
 					
 					
