@@ -259,6 +259,14 @@
 
 $(document).ready(function(){
 	$(".header").sticky({topSpacing:0});
+
+	$('#tweecool').tweecool({
+		username : 'fckobenhavn',
+		limit : 2,
+		profile_image : false,
+        show_retweeted_text: false,
+        show_time: true		
+	});
 });
 
 $(window).scroll(function() {    
