@@ -3656,6 +3656,9 @@ input#edit-pass {
   float: none;
   width: 100%;
 }
+.img-wrap {
+  margin-bottom: 20px;
+}
 @media only screen and (min-width: 768px) {
   .navbar .dropdown:hover .yamm-content .m-submenu a,
   .navbar .dropdown:hover .dropdown-menu li a {
