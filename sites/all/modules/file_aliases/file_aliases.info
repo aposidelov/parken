@@ -1,17 +1,20 @@
 name = File Aliases
-description = Adds file aliases to FileFields and Uploads.
+description = Adds file aliases to file based fields.
 dependencies[] = filefield_paths
 dependencies[] = path
+test_dependencies[] = pathauto
+test_dependencies[] = token
 package = Fields
 core = 7.x
-files[] = file_aliases.install
-files[] = file_aliases.module
-files[] = modules/filefield_paths.inc
 
 
-; Information added by drupal.org packaging script on 2011-11-15
-version = "7.x-1.0-beta1"
+; Files - Simpletest
+
+files[] = tests/file_aliases.test
+files[] = tests/pathauto.test
+; Information added by Drupal.org packaging script on 2015-11-28
+version = "7.x-1.0-beta1+14-dev"
 core = "7.x"
 project = "file_aliases"
-datestamp = "1321352132"
+datestamp = "1448701440"
 
