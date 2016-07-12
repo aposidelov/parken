@@ -227,9 +227,7 @@ if (theme_get_setting('boson_boxed') == TRUE) {
 					<div class="col-sm-3">
 						<?php if ($page['footer_secondcolumn']): ?>
               <?php print render($page['footer_secondcolumn']); ?>
-            <?php endif; ?>
-						<div id="tweecool"></div>
-
+            <?php endif; ?>						
 					</div>
 					
 					
